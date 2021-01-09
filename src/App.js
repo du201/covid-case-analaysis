@@ -4,6 +4,7 @@ import "./App.css";
 import { Route, Switch, Link } from 'react-router-dom';
 import MapPage from "./components/MapPage";
 import AnalysisPage from './components/AnalysisPage.jsx';
+import logoblue from './images/logoblue.svg';
 
 const US_MAP_PAGE = "USMapPage";
 const DATA_ANALYSIS_PAGE = "DataAnalysisPage";
@@ -18,7 +19,9 @@ function App() {
     <React.Fragment>
       <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{height:"8vh"}}>
         <div className="container-fluid">
-          <a className="navbar-brand" href="#" style={{fontSize:"1.25rem"}}><span style={{fontSize:"2.5rem"}}>US</span> Covid-19 Analysis</a>
+          <a className="navbar-brand" href="#" style={{fontSize:"1.25rem"}}><span style={{fontSize:"2.5rem"}}>US</span> Covid-19 Analysis 
+            <img className="logo-blue" src={logoblue} alt="logoblue" />
+          </a>
           {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button> */}
@@ -26,7 +29,7 @@ function App() {
             <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className={"nav-link nav-text" + (currentPage === US_MAP_PAGE ? " nav-bottom-highlight" : "")} onClick={() => setCurrentPage(US_MAP_PAGE)} to="/">U.S. Map</Link>
-                <div className="nav-underline"></div>
+                {/* <div className="nav-underline"></div> */}
               </li>
               <li className="nav-item">
                 <Link className={"nav-link nav-text" + (currentPage === US_MAP_PAGE ? "" : " nav-bottom-highlight")} onClick={() => setCurrentPage(DATA_ANALYSIS_PAGE)} to="/analysis">Data Analysis</Link>
