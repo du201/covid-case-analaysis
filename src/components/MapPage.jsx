@@ -1,11 +1,11 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import MapGL, {Source, Layer} from 'react-map-gl';
-import DropdownMenu from './DropdownMenu';
+// import DropdownMenu from './DropdownMenu';
 import deepCopy from '../utilities/deepCopy.js';
-import {DropdownMultiple, Dropdown} from 'reactjs-dropdown-component';
-import "./DropdownMenu.css";
+import {Dropdown} from 'reactjs-dropdown-component';
 import "../styles/MapPage.css";
+import "../styles/DropdownMenu.css";
 
 const MapPage = () => {
    // States for Mapbox

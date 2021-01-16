@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import angleUp from "../images/angle-up-solid.svg";
 import angleDown from "../images/angle-down-solid.svg";
 import check from "../images/check-solid.svg";
-// import "./DropdownMenu.css";
 
 
 const DropdownMenu = ({title, list, resetThenSet}) => {

@@ -1,13 +1,7 @@
-body {
-  margin: 0px;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-#map {
+/* #map {
   width: 100vw;
   height: 100vh;
-}
-
+} */
 .control-panel {
   position: absolute;
   top: 0;
@@ -22,16 +16,6 @@ body {
   color: #6b6b76;
   outline: none;
   text-transform: uppercase;
-}
-
-label {
-  display: inline-block;
-  width: 100px;
-}
-
-input {
-  margin-left: 20px;
-  width: 160px;
 }
 
 .tooltip-on-map {

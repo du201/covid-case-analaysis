@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import "./App.css";
 import { Route, Switch, Link } from 'react-router-dom';
+import "./App.css";
 import MapPage from "./components/MapPage";
 import AnalysisPage from './components/AnalysisPage.jsx';
 import logoblue from './images/logoblue.svg';
-
 const US_MAP_PAGE = "USMapPage";
 const DATA_ANALYSIS_PAGE = "DataAnalysisPage";
 
