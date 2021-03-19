@@ -324,12 +324,17 @@ const MapPage = () => {
   const [currentDataset, setCurrentDataset] = useState([
     {
       id: 0,
-      title: "2020 Election Result",
-      selected: false,
+      title: "None",
+      selected: true,
       key: 'currentDataset'
+    }, 
+    {
+        id: 1,
+        title: "2020 Election Result",
+        selected: false,
+        key: 'currentDataset'
     }
   ]);
-
 
   let changeZoomInState = newZoomInState => {
     setZoomInState(newZoomInState);
@@ -338,29 +343,30 @@ const MapPage = () => {
   let changeCurrentDataset = newCurrentDataset => {
     setCurrentDataset(newCurrentDataset);
   }
-  let onViewportChange = viewport => setViewport(viewport);
+  let onViewportChange = viewport => {setViewport(viewport);};
 
   let onHover = event => {
     const {
       features, // The features are all the map layers that the cursor is currently on. In this case, we only want the data layer
       srcEvent: {offsetX, offsetY}
     } = event;
-    const hoveredFeature = features && features.find(f => f.layer.id === 'us-income-election'); // This is the data layer. It is null when the cursor is not on any data layer
+    const hoveredFeature = features && features.find(f => f.layer.id === 'covid-analysis'); // This is the data layer. It is null when the cursor is not on any data layer
     setHoveredFeature(hoveredFeature);
     setX(offsetX); // These will be the location for the tooltip
     setY(offsetY);
   };
 
   let renderTooltip = () => {
-    console.log(hoveredFeature, x, y);
+    // console.log(hoveredFeature, x, y);
     return ( // The properties in hoveredFeature is the features in our GeoJson data
       hoveredFeature && (
         <div className="tooltip-on-map" style={{left: x, top: y}}>
-          <div>State: {hoveredFeature.properties.name}</div> 
-          <div>Median Household Income: {hoveredFeature.properties.value}</div>
-          <div>Percentile: {(hoveredFeature.properties.percentile / 8) * 100}</div>
+          <h5>{hoveredFeature.properties.name}</h5> 
+          <h6>Incident Rate (per 100K people): <br /><strong>{hoveredFeature.properties.incident_rate}</strong></h6>
+          <h6>Testing Rate (per 100K people): <br /><strong>{hoveredFeature.properties.testing_rate}</strong></h6>
+          {/* <div>Percentile: {(hoveredFeature.properties.percentile / 8) * 100}</div>
           <div>GOP: {hoveredFeature.properties.per_gop}</div>
-          <div>DEM: {hoveredFeature.properties.per_dem}</div>
+          <div>DEM: {hoveredFeature.properties.per_dem}</div> */}
         </div>
       )
     );
@@ -377,6 +383,7 @@ const MapPage = () => {
       copy_currentDataset.forEach((item) => item.selected = false);
       copy_currentDataset[id].selected = true;
       setCurrentDataset(copy_currentDataset);
+      console.log(id);
     } else if (key === 'zoomInState') {
       let copy_zoomInState = deepCopy(zoomInState);
       copy_zoomInState.forEach((item) => item.selected = false);
@@ -390,7 +397,7 @@ const MapPage = () => {
       <div style={{width:"17vw", height:"92vh", padding:"2rem"}}>
         <p className="dropdown-title-above">Select a Data Set<br /> to Compare With:</p>
         <Dropdown
-          title="2020 Election Result"
+          title="None"
           list={currentDataset}
           resetThenSet={resetThenSet}
         />
@@ -412,6 +419,7 @@ const MapPage = () => {
           currentSelection={currentDataset}
           changeSelection={changeCurrentDataset}
         /> */}
+        <div style={{position:"absolute", bottom:"1rem"}}>Last Updated on 1/24/2021</div>
       </div>
       <MapGL
         {...viewport}

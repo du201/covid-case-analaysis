@@ -53,6 +53,7 @@ function App() {
         <Route path="/analysis" render={(props) => <AnalysisPage {...props}></AnalysisPage>}></Route>
         <Route path="/" render={(props) => <MapPage {...props}></MapPage>}></Route>
       </Switch>
+      
     </React.Fragment>
   );
 }
